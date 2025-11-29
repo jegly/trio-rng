@@ -77,7 +77,7 @@ cd trio-rng
 # 6. Install the package
 pip install -e .
 
-# 7. Now you can use quantum-rng from anywhere (while venv is active)
+# 7. Now you can use trio-rng from anywhere (while venv is active)
 trio-rng --bits 64 --verbose
 ```
 
@@ -217,7 +217,7 @@ trio-rng --bits 32 | grep "Dec:" | awk '{MIN=50; MAX=150; print ($2 % (MAX-MIN+1
 import subprocess
 
 def get_quantum_random(min_val=1, max_val=10):
-    result = subprocess.run(['quantum-rng', '--bits', '32'], 
+    result = subprocess.run(['trio-rng', '--bits', '32'], 
                           capture_output=True, text=True)
     for line in result.stdout.split('\n'):
         if line.startswith('Dec:'):
