@@ -6,11 +6,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="trio-rng",
     version="1.0.0",
-    author="Quantum RNG Developer",
-    description="Triple-cascade quantum random number generator using OpenSSL, Qiskit, and Cirq",
+    author="JEGLY",
+    description="Triple-cascade random number generator using OpenSSL, Qiskit, and Cirq",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/trio-rng",
+    url="https://github.com/jegly/trio-rng",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
