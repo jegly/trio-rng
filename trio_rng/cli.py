@@ -228,10 +228,10 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  quantum-rng --bits 64
-  quantum-rng --bits 128 --cascade openssl,qiskit,cirq
-  quantum-rng --bits 32 --cascade qiskit,cirq --verbose
-  quantum-rng --bits 64 --seed 12345 --verbose
+  trio-rng --bits 64
+  trio-rng --bits 128 --cascade openssl,qiskit,cirq
+  trio-rng --bits 32 --cascade qiskit,cirq --verbose
+  trio-rng --bits 64 --seed 12345 --verbose
         """
     )
     
