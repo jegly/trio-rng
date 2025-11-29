@@ -3,7 +3,7 @@ trio-rng: Triple-Cascade Quantum Random Number Generator
 """
 
 __version__ = "1.0.0"
-__author__ = "Quantum RNG Developer"
+__author__ = "JEGLY"
 
 from .cli import TrioRNG, main
 
