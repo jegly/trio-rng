@@ -32,7 +32,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "quantum-rng=trio_rng.cli:main",
+            "trio-rng=trio_rng.cli:main",
         ],
     },
 )
