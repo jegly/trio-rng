@@ -78,7 +78,7 @@ cd trio-rng
 pip install -e .
 
 # 7. Now you can use quantum-rng from anywhere (while venv is active)
-quantum-rng --bits 64 --verbose
+trio-rng --bits 64 --verbose
 ```
 
 ### Important Notes
@@ -118,7 +118,7 @@ source ~/trio-rng-env/bin/activate
 
 Generate 64 random bits using all three stages:
 ```bash
-quantum-rng --bits 64
+trio-rng --bits 64
 ```
 
 Output:
@@ -134,13 +134,13 @@ Use only specific stages:
 
 ```bash
 # Only Qiskit and Cirq
-quantum-rng --bits 128 --cascade qiskit,cirq
+trio-rng --bits 128 --cascade qiskit,cirq
 
 # Only OpenSSL
-quantum-rng --bits 32 --cascade openssl
+trio-rng --bits 32 --cascade openssl
 
 # All three (default)
-quantum-rng --bits 256 --cascade openssl,qiskit,cirq
+trio-rng --bits 256 --cascade openssl,qiskit,cirq
 ```
 
 ### Verbose Mode
@@ -148,7 +148,7 @@ quantum-rng --bits 256 --cascade openssl,qiskit,cirq
 See intermediate outputs from each stage:
 
 ```bash
-quantum-rng --bits 64 --verbose
+trio-rng --bits 64 --verbose
 ```
 
 ### Reproducible Generation
@@ -156,13 +156,13 @@ quantum-rng --bits 64 --verbose
 Use a seed for reproducible results:
 
 ```bash
-quantum-rng --bits 64 --seed 12345 --verbose
+trio-rng --bits 64 --seed 12345 --verbose
 ```
 
 ### Full Example
 
 ```bash
-quantum-rng --bits 128 --cascade openssl,qiskit,cirq --verbose --seed 42
+trio-rng --bits 128 --cascade openssl,qiskit,cirq --verbose --seed 42
 ```
 
 ## How It Works
@@ -202,13 +202,13 @@ Since the tool outputs large random numbers, you can map them to any range:
 
 ```bash
 # Generate random number between 1 and 10
-quantum-rng --bits 32 | grep "Dec:" | awk '{print ($2 % 10) + 1}'
+trio-rng --bits 32 | grep "Dec:" | awk '{print ($2 % 10) + 1}'
 
 # Generate random number between 1 and 100
-quantum-rng --bits 32 | grep "Dec:" | awk '{print ($2 % 100) + 1}'
+trio-rng --bits 32 | grep "Dec:" | awk '{print ($2 % 100) + 1}'
 
 # Generate random number between MIN and MAX (e.g., 50 to 150)
-quantum-rng --bits 32 | grep "Dec:" | awk '{MIN=50; MAX=150; print ($2 % (MAX-MIN+1)) + MIN}'
+trio-rng --bits 32 | grep "Dec:" | awk '{MIN=50; MAX=150; print ($2 % (MAX-MIN+1)) + MIN}'
 ```
 
 ### Use with Python
@@ -233,17 +233,17 @@ print(get_quantum_random(1, 10))
 
 ```bash
 # 256-bit key
-quantum-rng --bits 256
+trio-rng --bits 256
 
 # 128-bit key in hex
-quantum-rng --bits 128 | grep "Hex:"
+trio-rng --bits 128 | grep "Hex:"
 ```
 
 ## Examples
 
 ### Generate 256-bit random number
 ```bash
-quantum-rng --bits 256
+trio-rng --bits 256
 ```
 
 Output:
@@ -256,24 +256,24 @@ Dec:    98765432...
 ### Compare cascade stages
 ```bash
 # OpenSSL only
-quantum-rng --bits 64 --cascade openssl --seed 42
+trio-rng --bits 64 --cascade openssl --seed 42
 
 # Qiskit only  
-quantum-rng --bits 64 --cascade qiskit --seed 42
+trio-rng --bits 64 --cascade qiskit --seed 42
 
 # Full cascade
-quantum-rng --bits 64 --cascade openssl,qiskit,cirq --seed 42
+trio-rng --bits 64 --cascade openssl,qiskit,cirq --seed 42
 ```
 
 ### Verbose output for debugging
 ```bash
-quantum-rng --bits 64 --verbose
+trio-rng --bits 64 --verbose
 ```
 
 Full Output:
 ```
 ============================================================
-Triple-Cascade Quantum RNG
+Triple-Cascade RNG
 ============================================================
 Bits requested: 64
 Cascade: openssl -> qiskit -> cirq
@@ -331,7 +331,7 @@ pip install qiskit qiskit-aer cirq --upgrade
 
 ### Command Not Found
 
-If `quantum-rng` command is not found after installation:
+If `trio-rng` command is not found after installation:
 
 ```bash
 # Reinstall in editable mode
